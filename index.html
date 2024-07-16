@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Lucida Grande'}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Lucida Grande'}
+    span.s2 {font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;p5.js Sketch&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>canvas {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let words = [];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let wordList = ["<span class="s1">ךמצע</span>", "<span class="s1">תא</span>", "<span class="s1">אונשלו</span>", "<span class="s1">רקובב</span>", "<span class="s1">ררועתהל</span>", "<span class="s1">םדרהל</span>", "<span class="s1">םלעהל</span>", "<span class="s1">חוכשלו</span>", "<span class="s1">חורבל</span>"];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let sentenceLines = [</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>",<span class="s1">חוכשלו</span> <span class="s1">חורבל</span>",</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">םדרהל</span> <span class="s1">םלעהל</span>",</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">רקובב</span> <span class="s1">ררועתהל</span>",</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ךמצע</span> <span class="s1">תא</span> <span class="s1">אונשלו</span>",</p>
+<p dir="rtl" class="p2"><span class="s2"><span class="Apple-converted-space">        </span>"</span>ההההההההההההההההא<span class="s2">"</span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let numRepeats = 300;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let startRadius = 500;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let customFont;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let yOffset = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let scrollSpeed = 10;</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function preload() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>customFont = loadFont('https://raw.githubusercontent.com/yoach93/janes_sketch/main/myfont.otf'); // Update with your URL</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function setup() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>createCanvas(windowWidth, windowHeight);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textAlign(CENTER, CENTER);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textSize(6);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>angleMode(DEGREES);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textFont(customFont);</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let j = 0; j &lt; numRepeats; j++) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wordList.forEach(word =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let angle = random(360);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let distance = random(startRadius);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>words.push({ char: word, angle: angle, initialDistance: distance, distance: distance });</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function draw() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background('#F4F3F2');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>translate(width / 2, height / 2);</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>words.forEach(word =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>word.distance = word.initialDistance + yOffset;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>let x = cos(word.angle) * word.distance;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>let y = sin(word.angle) * word.distance;</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>text(word.char, x, y);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>textSize(30);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fill(0);</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let lineHeight = 40;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; sentenceLines.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>text(sentenceLines[i], 0, -80 + i * lineHeight);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function windowResized() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>resizeCanvas(windowWidth, windowHeight);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p3"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function mouseWheel(event) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>yOffset += event.delta * scrollSpeed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>yOffset = constrain(yOffset, 0, height * 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
